@@ -1,10 +1,20 @@
 {
   "name": "everybody777-frontend",
+  "private": true,
   "version": "0.1.0",
   "repository": "https://github.com/HollysParty/everybody777-frontend.git",
   "license": "MIT",
   "maintainers": [
     "mysticPrg",
     "sunny kyung"
-  ]
+  ],
+  "workspaces": {
+    "packages": [
+      "packages/*",
+      "services/*"
+    ]
+  },
+  "devDependencies": {
+    "lerna": "^3.22.1"
+  }
 }
