@@ -9,12 +9,11 @@
     "sunny kyung"
   ],
   "scripts": {
-    "start": "lerna run --scope @service/* --parallel --stream start",
-    "start:monitor": "lerna run --scope @service/monitor --stream start",
-    "start:paint": "lerna run --scope @service/paint --stream start",
-    "build": "lerna run --scope @service/* --parallel --stream build",
-    "build:monitor": "lerna run --scope @service/monitor --stream build",
-    "build:paint": "lerna run --scope @service/paint --stream build"
+    "start:monitor": "lerna run start --scope @service/monitor --stream",
+    "start:paint": "lerna run start --scope @service/paint --stream",
+    "build": "lerna run build --scope @service/* --stream --include-dependencies",
+    "build:monitor": "lerna run build --scope @service/monitor --stream --include-dependencies",
+    "build:paint": "lerna run build --scope @service/paint --stream --include-dependencies"
   },
   "workspaces": {
     "packages": [
