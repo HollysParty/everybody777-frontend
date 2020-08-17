@@ -10,7 +10,7 @@ function App() {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>This is monitor client</p>
-        <p>from sample package!: {sum(1, 2)}</p>
+        <p>from sample package: {sum(1, 10)}</p>
         <p>
           Edit <code>src/App.tsx</code> and save to reload.
         </p>
