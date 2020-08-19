@@ -2,6 +2,7 @@
   "name": "@service/monitor",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://hollysparty.github.io/everybody777-frontend/monitor",
   "dependencies": {
     "@package/sample": "^0.1.0",
     "@testing-library/jest-dom": "^4.2.4",
