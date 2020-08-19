@@ -15,6 +15,7 @@
     "start:lerna:monitor": "lerna run start --scope @service/monitor --stream",
     "start:lerna:paint": "lerna run start --scope @service/paint --stream",
     "build": "lerna run build --scope @service/* --stream --include-dependencies",
+    "build:packages": "lerna run build --scope '@package/*' --stream --include-dependencies",
     "build:monitor": "lerna run build --scope @service/monitor --stream --include-dependencies",
     "build:paint": "lerna run build --scope @service/paint --stream --include-dependencies",
     "lint": "lerna run lint --scope @service/* --stream --parallel --include-dependencies",
