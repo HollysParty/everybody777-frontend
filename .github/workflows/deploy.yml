@@ -32,3 +32,15 @@ jobs:
         run: yarn build
         env:
           CI: true
+
+      - name: Move builded files
+        run: mkdir public; mv ./services/monitor/build ./public/monitor; mv ./services/paint/build ./public/paint;
+
+      - name: Deploy to GitHub Pages
+        if: success()
+        uses: crazy-max/ghaction-github-pages@v2
+        with:
+          target_branch: gh-pages
+          build_dir: public
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
