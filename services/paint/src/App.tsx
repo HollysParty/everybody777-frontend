@@ -1,9 +1,9 @@
-import React from 'react';
-import ApolloClient, {gql} from "apollo-boost"
-import {ApolloProvider, Query, QueryResult} from "react-apollo"
+import React from 'react'
+import ApolloClient, { gql } from 'apollo-boost'
+import { ApolloProvider, Query, QueryResult } from 'react-apollo'
 
 const client = new ApolloClient({
-  uri: "https://countries.trevorblades.com",
+  uri: 'https://countries.trevorblades.com'
 })
 
 const GET_CONTINENTS = gql`
@@ -41,24 +41,22 @@ function App() {
           </a>
         </header>
         <Query query={GET_CONTINENTS}>
-          {
-            (result: QueryResult<Continents, Record<string, any>>) => {
-              const {loading, error, data} = result;
-              if (loading) return <p>Loading...</p>
-              if (error) return <p>Error!(</p>
-              return (
-                <ul>
-                  {data && data.continents.map(({code, name}) => (
+          {(result: QueryResult<Continents, Record<string, any>>) => {
+            const { loading, error, data } = result
+            if (loading) return <p>Loading...</p>
+            if (error) return <p>Error!(</p>
+            return (
+              <ul>
+                {data &&
+                  data.continents.map(({ code, name }) => (
                     <li key={code}>{name}</li>
                   ))}
-                </ul>
-              )
-            }
-          }
+              </ul>
+            )
+          }}
         </Query>
       </div>
     </ApolloProvider>
-  );
+  )
 }
-
-export default App;
+export default App
