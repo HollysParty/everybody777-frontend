@@ -1,8 +1,6 @@
 import React from 'react';
-import ApolloClient from "apollo-boost"
-import {ApolloProvider} from "react-apollo"
-import {gql} from "apollo-boost"
-import {Query, QueryResult} from "react-apollo"
+import ApolloClient, {gql} from "apollo-boost"
+import {ApolloProvider, Query, QueryResult} from "react-apollo"
 
 const client = new ApolloClient({
   uri: "https://countries.trevorblades.com",
@@ -42,7 +40,6 @@ function App() {
             Learn React
           </a>
         </header>
-
         <Query query={GET_CONTINENTS}>
           {
             (result: QueryResult<Continents, Record<string, any>>) => {
@@ -58,7 +55,6 @@ function App() {
               )
             }
           }
-
         </Query>
       </div>
     </ApolloProvider>
