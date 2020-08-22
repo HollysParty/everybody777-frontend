@@ -1,11 +1,10 @@
-<<<<<<< master
-import React from 'react'
-import ApolloClient, { gql } from 'apollo-boost'
-import { ApolloProvider, Query, QueryResult } from 'react-apollo'
+import React from 'react';
+import ApolloClient, { gql } from 'apollo-boost';
+import { ApolloProvider, Query, QueryResult } from 'react-apollo';
 
 const client = new ApolloClient({
   uri: 'https://countries.trevorblades.com'
-})
+});
 
 const GET_CONTINENTS = gql`
   query {
@@ -14,14 +13,14 @@ const GET_CONTINENTS = gql`
       name
     }
   }
-`
+`;
 
 type Continents = {
   continents: {
-    code: string
-    name: string
-  }[]
-}
+    code: string;
+    name: string;
+  }[];
+};
 
 function App() {
   return (
@@ -43,9 +42,9 @@ function App() {
         </header>
         <Query query={GET_CONTINENTS}>
           {(result: QueryResult<Continents, Record<string, any>>) => {
-            const { loading, error, data } = result
-            if (loading) return <p>Loading...</p>
-            if (error) return <p>Error!(</p>
+            const { loading, error, data } = result;
+            if (loading) return <p>Loading...</p>;
+            if (error) return <p>Error!(</p>;
             return (
               <ul>
                 {data &&
@@ -53,40 +52,12 @@ function App() {
                     <li key={code}>{name}</li>
                   ))}
               </ul>
-            )
+            );
           }}
         </Query>
       </div>
     </ApolloProvider>
-  )
-}
-export default App
-=======
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
-
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>This is paint client</p>
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
   );
 }
 
 export default App;
->>>>>>> 세미콜론 true 적용
