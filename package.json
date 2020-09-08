@@ -18,9 +18,7 @@
     "build:packages": "lerna run build --scope '@package/*' --stream --include-dependencies",
     "build:monitor": "lerna run build --scope @service/monitor --stream --include-dependencies",
     "build:paint": "lerna run build --scope @service/paint --stream --include-dependencies",
-    "lint": "lerna run lint --scope @service/* --stream --parallel --include-dependencies",
-    "lint:monitor": "lerna run lint --scope @service/monitor --stream --include-dependencies",
-    "lint:paint": "lerna run lint --scope @service/paint --stream --include-dependencies",
+    "lint": "prettier .",
     "test": "lerna run test --scope @service/* --stream --parallel --include-dependencies",
     "test:monitor": "lerna run test --scope @service/monitor --stream --include-dependencies",
     "test:paint": "lerna run test --scope @service/paint --stream --include-dependencies",
@@ -50,6 +48,8 @@
     }
   },
   "lint-staged": {
-    "*.{js,jsx,mjs,ts,tsx}": ["prettier --write", "lint"]
+    "*.{js,jsx,mjs,ts,tsx}": [
+      "prettier --write"
+    ]
   }
 }
