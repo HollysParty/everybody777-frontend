@@ -19,9 +19,9 @@
     "build:monitor": "lerna run build --scope @service/monitor --stream --include-dependencies",
     "build:paint": "lerna run build --scope @service/paint --stream --include-dependencies",
     "lint": "prettier .",
-    "test": "lerna run test --scope @service/* --stream --parallel --include-dependencies",
-    "test:monitor": "lerna run test --scope @service/monitor --stream --include-dependencies",
-    "test:paint": "lerna run test --scope @service/paint --stream --include-dependencies",
+    "test": "lerna run test --scope @service/* --stream --parallel --include-dependencies -- --passWithNoTests",
+    "test:monitor": "lerna run test --scope @service/monitor --stream --include-dependencies -- --passWithNoTests",
+    "test:paint": "lerna run test --scope @service/paint --stream --include-dependencies -- --passWithNoTests",
     "prettier": "prettier --write \"**/*.{js,jsx,mjs,ts,tsx}\""
   },
   "workspaces": {
