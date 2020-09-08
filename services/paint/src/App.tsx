@@ -1,60 +1,44 @@
-import React from 'react';
-import ApolloClient, { gql } from 'apollo-boost';
-import { ApolloProvider, Query, QueryResult } from 'react-apollo';
+import React, { useState, useCallback } from 'react';
+import ApolloClient from 'apollo-boost';
+import { ApolloProvider } from 'react-apollo';
+
+import { END_POINT_URL, END_POINT_PATH } from './constants/graphql';
+import SketchList from './components/SketchList';
+import TileList from './components/TileList';
 
 const client = new ApolloClient({
-  uri: 'https://countries.trevorblades.com'
+  uri: `${END_POINT_URL}${END_POINT_PATH}`
 });
 
-const GET_CONTINENTS = gql`
-  query {
-    continents {
-      code
-      name
-    }
-  }
-`;
-
-type Continents = {
-  continents: {
-    code: string;
-    name: string;
-  }[];
-};
+enum APP_MODE {
+  SKETCH = 'SKETCH',
+  TILE = 'TILE'
+}
 
 function App() {
+  const [appMode, setAppMode] = useState(APP_MODE.SKETCH);
+
+  const toggleAppMode = useCallback(() => {
+    setAppMode((prevAppMode) =>
+      prevAppMode === APP_MODE.SKETCH ? APP_MODE.TILE : APP_MODE.SKETCH
+    );
+  }, [setAppMode]);
+
   return (
     <ApolloProvider client={client}>
-      <div className="App">
-        <header className="App-header">
-          <p>This is paint client</p>
+      <div>
+        <div>
+          <p>mode: {appMode}</p>
           <p>
-            Edit <code>src/App.tsx</code> and save to reload.
+            <button type="button" onClick={toggleAppMode}>
+              toggle mode
+            </button>
           </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-        <Query query={GET_CONTINENTS}>
-          {(result: QueryResult<Continents, Record<string, any>>) => {
-            const { loading, error, data } = result;
-            if (loading) return <p>Loading...</p>;
-            if (error) return <p>Error!(</p>;
-            return (
-              <ul>
-                {data &&
-                  data.continents.map(({ code, name }) => (
-                    <li key={code}>{name}</li>
-                  ))}
-              </ul>
-            );
-          }}
-        </Query>
+        </div>
+        <div>
+          {appMode === APP_MODE.SKETCH && <SketchList />}
+          {appMode === APP_MODE.TILE && <TileList />}
+        </div>
       </div>
     </ApolloProvider>
   );
