@@ -1,7 +1,7 @@
 import React from 'react';
 import ApolloClient from 'apollo-boost';
 import { ApolloProvider } from 'react-apollo';
-import SketchList from './SketchList';
+import SketchList from './components/SketchList';
 import { END_POINT_URL, END_POINT_PATH } from './constants/graphql';
 
 const client = new ApolloClient({

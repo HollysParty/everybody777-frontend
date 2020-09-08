@@ -1,7 +1,7 @@
 import React from 'react';
 import { gql } from 'apollo-boost';
-import { useApolloClient, useQuery, QueryResult } from 'react-apollo';
-import { END_POINT_URL } from './constants/graphql';
+import { useQuery } from 'react-apollo';
+import { END_POINT_URL } from '../constants/graphql';
 
 const GET_SKETCHES = gql`
   query {
