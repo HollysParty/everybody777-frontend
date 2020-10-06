@@ -9,19 +9,19 @@
     "sunny kyung"
   ],
   "scripts": {
-    "start:monitor": "npm-run-all -p start:packages start:lerna:monitor",
-    "start:paint": "npm-run-all -p start:packages start:lerna:paint",
+    "start:screen": "npm-run-all -p start:packages start:lerna:screen",
+    "start:canvas": "npm-run-all -p start:packages start:lerna:canvas",
     "start:packages": "lerna run start --scope '@package/*' --stream --parallel",
-    "start:lerna:monitor": "lerna run start --scope @service/monitor --stream",
-    "start:lerna:paint": "lerna run start --scope @service/paint --stream",
+    "start:lerna:screen": "lerna run start --scope @service/screen --stream",
+    "start:lerna:canvas": "lerna run start --scope @service/canvas --stream",
     "build": "lerna run build --scope @service/* --stream --include-dependencies",
     "build:packages": "lerna run build --scope '@package/*' --stream --include-dependencies",
-    "build:monitor": "lerna run build --scope @service/monitor --stream --include-dependencies",
-    "build:paint": "lerna run build --scope @service/paint --stream --include-dependencies",
+    "build:screen": "lerna run build --scope @service/screen --stream --include-dependencies",
+    "build:canvas": "lerna run build --scope @service/canvas --stream --include-dependencies",
     "lint": "prettier .",
     "test": "lerna run test --scope @service/* --stream --parallel --include-dependencies -- --passWithNoTests",
-    "test:monitor": "lerna run test --scope @service/monitor --stream --include-dependencies -- --passWithNoTests",
-    "test:paint": "lerna run test --scope @service/paint --stream --include-dependencies -- --passWithNoTests",
+    "test:screen": "lerna run test --scope @service/screen --stream --include-dependencies -- --passWithNoTests",
+    "test:canvas": "lerna run test --scope @service/canvas --stream --include-dependencies -- --passWithNoTests",
     "prettier": "prettier --write \"**/*.{js,jsx,mjs,ts,tsx}\""
   },
   "workspaces": {

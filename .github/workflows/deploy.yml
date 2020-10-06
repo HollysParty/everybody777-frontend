@@ -34,7 +34,7 @@ jobs:
           CI: true
 
       - name: Move builded files
-        run: mkdir public; mv ./services/monitor/build ./public/monitor; mv ./services/paint/build ./public/paint;
+        run: mkdir public; mv ./services/screen/build ./public/screen; mv ./services/canvas/build ./public/canvas;
 
       - name: Deploy to GitHub Pages
         if: success()
