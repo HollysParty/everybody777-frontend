@@ -18,7 +18,7 @@
     "build:packages": "lerna run build --scope '@package/*' --stream --include-dependencies",
     "build:screen": "lerna run build --scope @service/screen --stream --include-dependencies",
     "build:canvas": "lerna run build --scope @service/canvas --stream --include-dependencies",
-    "lint": "prettier .",
+    "lint": "prettier . -l",
     "test": "lerna run test --scope @service/* --stream --parallel --include-dependencies -- --passWithNoTests",
     "test:screen": "lerna run test --scope @service/screen --stream --include-dependencies -- --passWithNoTests",
     "test:canvas": "lerna run test --scope @service/canvas --stream --include-dependencies -- --passWithNoTests",
