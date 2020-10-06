@@ -9,11 +9,11 @@
     "sunny kyung"
   ],
   "scripts": {
-    "start:screen": "npm-run-all -p start:packages start:lerna:screen",
-    "start:canvas": "npm-run-all -p start:packages start:lerna:canvas",
-    "start:packages": "lerna run start --scope '@package/*' --stream --parallel",
-    "start:lerna:screen": "lerna run start --scope @service/screen --stream",
-    "start:lerna:canvas": "lerna run start --scope @service/canvas --stream",
+    "start:screen": "npm-run-all -s build:packages start:lerna:screen",
+    "start:canvas": "npm-run-all -s build:packages start:lerna:canvas",
+    "start:packages": "lerna run build --scope '@package/*' --stream --parallel",
+    "start:lerna:screen": "lerna run start --scope @service/screen --stream --parallel --include-dependencies",
+    "start:lerna:canvas": "lerna run start --scope @service/canvas --stream --parallel --include-dependencies",
     "build": "lerna run build --scope @service/* --stream --include-dependencies",
     "build:packages": "lerna run build --scope '@package/*' --stream --include-dependencies",
     "build:screen": "lerna run build --scope @service/screen --stream --include-dependencies",
