@@ -9,8 +9,9 @@ console.log(sum(1, 2));
 function App(): JSX.Element {
   return (
     <div>
-      <QRCode value="https://github.com/HollysParty/everybody777-frontend" />
       <Sketch />
+      <QRCode value="https://github.com/HollysParty/everybody777-frontend" />
+      <QRCode value="https://github.com/HollysParty/everybody777-frontend" />
     </div>
   );
 }
