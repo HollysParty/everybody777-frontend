@@ -1,47 +1,34 @@
-import React, { useState, useCallback } from 'react';
-import ApolloClient from 'apollo-boost';
+import React from 'react';
+import {
+  Route,
+  BrowserRouter as Router,
+  Redirect,
+  Switch
+} from 'react-router-dom';
 import { ApolloProvider } from 'react-apollo';
-
-import { END_POINT_URL, END_POINT_PATH } from './constants/graphql';
-import SketchList from './components/SketchList';
-import TileList from './components/TileList';
+import ApolloClient from 'apollo-boost';
+import { END_POINT_PATH, END_POINT_URL } from './constants/graphql';
+import Entry from './components/Entry';
+import Drawing from './components/Drawing';
 
 const client = new ApolloClient({
   uri: `${END_POINT_URL}${END_POINT_PATH}`
 });
-
-enum APP_MODE {
-  SKETCH = 'SKETCH',
-  TILE = 'TILE'
-}
+const baseName = '/everybody777-frontend/canvas';
 
 function App() {
-  const [appMode, setAppMode] = useState(APP_MODE.SKETCH);
-
-  const toggleAppMode = useCallback(() => {
-    setAppMode((prevAppMode) =>
-      prevAppMode === APP_MODE.SKETCH ? APP_MODE.TILE : APP_MODE.SKETCH
-    );
-  }, [setAppMode]);
-
   return (
     <ApolloProvider client={client}>
-      <div>
-        <div>
-          <p>mode: {appMode}</p>
-          <p>
-            <button type="button" onClick={toggleAppMode}>
-              toggle mode
-            </button>
-          </p>
-        </div>
-        <div>
-          {appMode === APP_MODE.SKETCH && <SketchList />}
-          {appMode === APP_MODE.TILE && <TileList />}
-        </div>
-      </div>
+      <Router basename={baseName}>
+        <Switch>
+          <Route exact path="/paint/:id" component={Drawing} />
+          <Route exact path="/" component={Entry} />
+          <Route>
+            <Redirect to="/" />
+          </Route>
+        </Switch>
+      </Router>
     </ApolloProvider>
   );
 }
-
 export default App;
