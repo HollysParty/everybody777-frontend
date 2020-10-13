@@ -2,6 +2,7 @@ import React from 'react';
 import { gql } from 'apollo-boost';
 import { useQuery } from 'react-apollo';
 import { END_POINT_URL } from '../constants/graphql';
+import { Link } from 'react-router-dom';
 
 const GET_SKETCHES = gql`
   query {
@@ -40,7 +41,9 @@ export default function SketchList() {
           <div>
             <p>id: {id}</p>
             <p>
-              <img src={`${END_POINT_URL}${imageUrl}`} alt={id} />
+              <Link to={`/paint/${id}`}>
+                <img src={`${END_POINT_URL}${imageUrl}`} alt={id} />
+              </Link>
             </p>
           </div>
         </li>
