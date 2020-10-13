@@ -1,5 +1,4 @@
 import React from 'react';
-import { gql } from 'apollo-boost';
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
@@ -17,15 +16,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-const GET_SKETCHES = gql`
-  query {
-    sketches(id: "1") {
-      imageUrl
-    }
-  }
-`;
-
-function Drawing(props: any) {
+function Drawing(): JSX.Element {
   const classes = useStyles();
   const imageUrl = '/images/sketch/951810fbd307.jpg';
   return (
@@ -37,7 +28,7 @@ function Drawing(props: any) {
         <Grid item xs={12}>
           <Paper className={classes.paper}>
             Image
-            <img src={`${END_POINT_URL}${imageUrl}`} />
+            <img src={`${END_POINT_URL}${imageUrl}`} alt="tile" />
           </Paper>
         </Grid>
         <Grid item xs={12}>
