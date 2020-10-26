@@ -1,39 +1,19 @@
-import React from 'react';
-import { gql } from 'apollo-boost';
-import { useQuery } from 'react-apollo';
-import { END_POINT_URL } from '../constants/graphql';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-
-const GET_SKETCHES = gql`
-  query {
-    sketches {
-      id
-      imageUrl
-    }
-  }
-`;
+import { getSketches } from '../api/getSketches';
+import { BASE_URL } from '../const';
 
 interface Sketch {
   id: string;
   imageUrl: string;
 }
 
-interface GetSketchesResult {
-  sketches: Sketch[];
-}
-
 export default function SketchList() {
-  const { data, error, loading } = useQuery<GetSketchesResult>(GET_SKETCHES);
-  if (loading) {
-    return <p>Loading...</p>;
-  }
+  const [sketches, setSketches] = useState<Sketch[]>([]);
 
-  if (!data || error) {
-    return <p>Error!(</p>;
-  }
-
-  const { sketches } = data;
-
+  useEffect(() => {
+    getSketches().then((data: Sketch[]) => setSketches(data));
+  }, []);
   return (
     <ul>
       {sketches.map(({ id, imageUrl }) => (
@@ -42,7 +22,7 @@ export default function SketchList() {
             <p>id: {id}</p>
             <p>
               <Link to={`/paint/${id}`}>
-                <img src={`${END_POINT_URL}${imageUrl}`} alt={id} />
+                <img src={`${BASE_URL}/${imageUrl}`} alt={id} />
               </Link>
             </p>
           </div>

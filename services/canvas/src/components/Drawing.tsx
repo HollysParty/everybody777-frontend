@@ -3,7 +3,6 @@ import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import Palette from './Palette';
-import { END_POINT_URL } from '../constants/graphql';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -26,10 +25,7 @@ function Drawing(): JSX.Element {
           <Paper className={classes.paper}>Save Button</Paper>
         </Grid>
         <Grid item xs={12}>
-          <Paper className={classes.paper}>
-            Image
-            <img src={`${END_POINT_URL}${imageUrl}`} alt="tile" />
-          </Paper>
+          <Paper className={classes.paper}>Image</Paper>
         </Grid>
         <Grid item xs={12}>
           <Palette />

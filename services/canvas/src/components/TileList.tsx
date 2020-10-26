@@ -1,37 +1,17 @@
-import React from 'react';
-import { gql } from 'apollo-boost';
-import { useQuery } from 'react-apollo';
-import { END_POINT_URL } from '../constants/graphql';
-
-const GET_TILES = gql`
-  query {
-    tiles {
-      id
-      imageUrl
-    }
-  }
-`;
+import React, { useState, useEffect } from 'react';
+import { getTiles } from '../api/getTiles';
+import { BASE_URL } from '../const';
 
 interface Tile {
   id: string;
   imageUrl: string;
 }
-
-interface GetTilesResult {
-  tiles: Tile[];
-}
-
 export default function TileList() {
-  const { data, error, loading } = useQuery<GetTilesResult>(GET_TILES);
-  if (loading) {
-    return <p>Loading...</p>;
-  }
+  const [tiles, setTiles] = useState<Tile[]>([]);
 
-  if (!data || error) {
-    return <p>Error!(</p>;
-  }
-
-  const { tiles } = data;
+  useEffect(() => {
+    getTiles().then((data: Tile[]) => setTiles(data));
+  }, []);
 
   return (
     <ul>
@@ -40,7 +20,7 @@ export default function TileList() {
           <div>
             <p>id: {id}</p>
             <p>
-              <img src={`${END_POINT_URL}${imageUrl}`} alt={id} />
+              <img src={`${BASE_URL}/${imageUrl}`} alt={id} />
             </p>
           </div>
         </li>
