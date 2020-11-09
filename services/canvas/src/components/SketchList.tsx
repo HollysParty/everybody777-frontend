@@ -4,7 +4,7 @@ import { getSketches } from '../api/getSketches';
 import { BASE_URL } from '../const';
 
 interface Sketch {
-  id: string;
+  id: number;
   imageUrl: string;
 }
 
@@ -22,7 +22,7 @@ export default function SketchList() {
             <p>id: {id}</p>
             <p>
               <Link to={`/paint/${id}`}>
-                <img src={`${BASE_URL}/${imageUrl}`} alt={id} />
+                <img src={`${BASE_URL}/${imageUrl}`} alt={'' + id} />
               </Link>
             </p>
           </div>
