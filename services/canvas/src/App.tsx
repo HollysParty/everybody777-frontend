@@ -14,7 +14,11 @@ function App() {
   return (
     <Router basename={baseName}>
       <Switch>
-        <Route exact path="/paint/:id" component={Drawing} />
+        <Route
+          exact
+          path="/paint/:id"
+          render={({ match }) => <Drawing id={match.params.id} />}
+        />
         <Route exact path="/" component={Entry} />
         <Route>
           <Redirect to="/" />

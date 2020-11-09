@@ -3,7 +3,7 @@ import { getTiles } from '../api/getTiles';
 import { BASE_URL } from '../const';
 
 interface Tile {
-  id: string;
+  id: number;
   imageUrl: string;
 }
 export default function TileList() {
@@ -20,7 +20,7 @@ export default function TileList() {
           <div>
             <p>id: {id}</p>
             <p>
-              <img src={`${BASE_URL}/${imageUrl}`} alt={id} />
+              <img src={`${BASE_URL}/${imageUrl}`} alt={'' + id} />
             </p>
           </div>
         </li>
