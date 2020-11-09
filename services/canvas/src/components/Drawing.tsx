@@ -33,7 +33,7 @@ function Drawing({ id }: { id: number }): JSX.Element {
         setImgUrl(sketch.imageUrl);
       }
     });
-  }, [setImgUrl]);
+  }, [id, setImgUrl]);
   return (
     <div className={classes.root}>
       <Grid container spacing={10}>
