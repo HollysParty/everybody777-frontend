@@ -1,18 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import { getSketches } from '../api/getSketches';
 import { BASE_URL } from '../const';
-
-interface Sketch {
-  id: number;
-  imageUrl: string;
-}
+import { ImageInfo } from '../types';
 
 export default function SketchList() {
-  const [sketches, setSketches] = useState<Sketch[]>([]);
+  const [sketches, setSketches] = useState<ImageInfo[]>([]);
 
   useEffect(() => {
-    getSketches().then((data: Sketch[]) => setSketches(data));
+    getSketches().then((data: ImageInfo[]) => setSketches(data));
   }, []);
   return (
     <ul>
@@ -21,9 +16,7 @@ export default function SketchList() {
           <div>
             <p>id: {id}</p>
             <p>
-              <Link to={`/paint/${id}`}>
-                <img src={`${BASE_URL}/${imageUrl}`} alt={'' + id} />
-              </Link>
+              <img src={`${BASE_URL}/${imageUrl}`} alt={'' + id} />
             </p>
           </div>
         </li>
