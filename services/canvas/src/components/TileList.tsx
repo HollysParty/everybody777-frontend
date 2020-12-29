@@ -1,16 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { getTiles } from '../api/getTiles';
 import { BASE_URL } from '../const';
+import { Link } from 'react-router-dom';
+import { ImageInfo } from '../types';
 
-interface Tile {
-  id: number;
-  imageUrl: string;
-}
 export default function TileList() {
-  const [tiles, setTiles] = useState<Tile[]>([]);
+  const [tiles, setTiles] = useState<ImageInfo[]>([]);
 
   useEffect(() => {
-    getTiles().then((data: Tile[]) => setTiles(data));
+    getTiles().then((data: ImageInfo[]) => setTiles(data));
   }, []);
 
   return (
@@ -20,7 +18,9 @@ export default function TileList() {
           <div>
             <p>id: {id}</p>
             <p>
-              <img src={`${BASE_URL}/${imageUrl}`} alt={'' + id} />
+              <Link to={`/paint/${id}`}>
+                <img src={`${BASE_URL}/${imageUrl}`} alt={'' + id} />
+              </Link>
             </p>
           </div>
         </li>

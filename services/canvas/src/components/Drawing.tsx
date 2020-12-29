@@ -4,7 +4,8 @@ import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import Palette from './Palette';
 import { BASE_URL } from '../const';
-import { getSketch } from '../api/getSketch';
+import { getTile } from '../api/getTile';
+import { ImageInfo } from '../types';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -16,11 +17,6 @@ const useStyles = makeStyles((theme) => ({
     color: theme.palette.text.secondary
   }
 }));
-
-interface Sketch {
-  id: number;
-  imageUrl: string;
-}
 
 interface Coordinate {
   x: number;
@@ -109,9 +105,9 @@ function Drawing({ id, width, height }: DrawingProps): JSX.Element {
   }, []);
 
   useEffect(() => {
-    getSketch(id).then((sketch: Sketch) => {
-      if (sketch.imageUrl) {
-        setImgUrl(sketch.imageUrl);
+    getTile(id).then((tile: ImageInfo) => {
+      if (tile.imageUrl) {
+        setImgUrl(tile.imageUrl);
       }
     });
   }, [id, setImgUrl]);
