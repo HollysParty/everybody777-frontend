@@ -25,12 +25,11 @@ interface Coordinate {
 
 interface DrawingProps {
   id: number;
-  width: number;
-  height: number;
+  width?: number;
+  height?: number;
 }
 
-// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
-function Drawing({ id, width, height }: DrawingProps): JSX.Element {
+function Drawing({ id, width = 185, height = 198 }: DrawingProps): JSX.Element {
   const classes = useStyles();
   const [imgUrl, setImgUrl] = useState('');
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
@@ -141,8 +140,8 @@ function Drawing({ id, width, height }: DrawingProps): JSX.Element {
             <canvas
               ref={canvasRef}
               className="canvas"
-              height={height}
               width={width}
+              height={height}
               style={{ backgroundImage: `url(${BASE_URL}/${imgUrl})` }}
             />
           </Paper>
@@ -154,10 +153,5 @@ function Drawing({ id, width, height }: DrawingProps): JSX.Element {
     </div>
   );
 }
-
-Drawing.defaultProps = {
-  width: 800,
-  height: 600
-};
 
 export default Drawing;
