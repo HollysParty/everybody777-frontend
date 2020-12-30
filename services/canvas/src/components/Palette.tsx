@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
+import ColorPicker from './ColorPicker';
 
 const useStyles = makeStyles({
   root: {
@@ -14,7 +15,11 @@ export default function Palette() {
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
 
-  const handleChange = (event: React.ChangeEvent<{}>, newValue: number) => {
+  const [selectedColor, setSelectedColor] = useState('#4A90E2');
+  const handleChange = (
+    event: React.ChangeEvent<unknown>,
+    newValue: number
+  ) => {
     setValue(newValue);
   };
 
@@ -31,6 +36,8 @@ export default function Palette() {
         <Tab label="SPRAY" />
         <Tab label="ERASER" />
       </Tabs>
+      Selected Color: {selectedColor}
+      <ColorPicker onChange={setSelectedColor} />
     </Paper>
   );
 }
