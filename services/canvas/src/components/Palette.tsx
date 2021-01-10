@@ -4,6 +4,7 @@ import Paper from '@material-ui/core/Paper';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import ColorPicker from './ColorPicker';
+import { useCanvasState } from '../context/CanvasProvider';
 
 const useStyles = makeStyles({
   root: {
@@ -13,9 +14,9 @@ const useStyles = makeStyles({
 
 export default function Palette() {
   const classes = useStyles();
-  const [value, setValue] = React.useState(0);
+  const [value, setValue] = useState(0);
+  const { color, setColor } = useCanvasState();
 
-  const [selectedColor, setSelectedColor] = useState('#4A90E2');
   const handleChange = (
     event: React.ChangeEvent<unknown>,
     newValue: number
@@ -36,8 +37,8 @@ export default function Palette() {
         <Tab label="SPRAY" />
         <Tab label="ERASER" />
       </Tabs>
-      Selected Color: {selectedColor}
-      <ColorPicker onChange={setSelectedColor} />
+      Selected Color: {color}
+      <ColorPicker onChange={setColor} />
     </Paper>
   );
 }
