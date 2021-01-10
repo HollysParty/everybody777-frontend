@@ -6,6 +6,7 @@ import Palette from './Palette';
 import { BASE_URL } from '../const';
 import { getTile } from '../api/getTile';
 import { ImageInfo } from '../types';
+import { useCanvasState } from '../context/CanvasProvider';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -38,6 +39,7 @@ function Drawing({ id, width = 185, height = 198 }: DrawingProps): JSX.Element {
     undefined
   );
   const [isPainting, setIsPainting] = useState(false);
+  const { color } = useCanvasState();
 
   const getCoordinates = (event: MouseEvent): Coordinate | undefined => {
     if (!canvasRef.current) {
@@ -62,9 +64,10 @@ function Drawing({ id, width = 185, height = 198 }: DrawingProps): JSX.Element {
     const context = canvas.getContext('2d');
 
     if (context) {
-      context.strokeStyle = 'red';
+      context.strokeStyle = color;
       context.lineJoin = 'round';
       context.lineWidth = 5;
+      context.globalAlpha = 0.3;
 
       context.beginPath();
       context.moveTo(originalMousePosition.x, originalMousePosition.y);
@@ -129,6 +132,7 @@ function Drawing({ id, width = 185, height = 198 }: DrawingProps): JSX.Element {
       canvas.removeEventListener('mouseleave', exitPaint);
     };
   }, [startPaint, paint, exitPaint]);
+  //TODO: https://www.daleseo.com/material-ui-containers-grids/ grid -> container?
   return (
     <div className={classes.root}>
       <Grid container spacing={10}>
