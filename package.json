@@ -14,7 +14,7 @@
     "start:packages": "lerna run build --scope '@package/*' --stream --parallel",
     "start:lerna:screen": "lerna run start --scope @service/screen --stream --parallel --include-dependencies",
     "start:lerna:canvas": "lerna run start --scope @service/canvas --stream --parallel --include-dependencies",
-    "build": "lerna run build --scope @service/* --stream --include-dependencies",
+    "build": "CI='' lerna run build --scope @service/* --stream --include-dependencies",
     "build:packages": "lerna run build --scope '@package/*' --stream --include-dependencies",
     "build:screen": "lerna run build --scope @service/screen --stream --include-dependencies",
     "build:canvas": "lerna run build --scope @service/canvas --stream --include-dependencies",
