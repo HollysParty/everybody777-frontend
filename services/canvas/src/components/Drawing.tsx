@@ -3,10 +3,11 @@ import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import Palette from './Palette';
-import { BASE_URL } from '../const';
+import { BASE_URL, WEBSOCKET_SEND_CHANEL } from '../const';
 import { getTile } from '../api/getTile';
 import { ImageInfo } from '../types';
 import { useCanvasState } from '../context/CanvasProvider';
+import { useStompClient } from '../context/WebSocketProvider';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -40,6 +41,7 @@ function Drawing({ id, width = 185, height = 198 }: DrawingProps): JSX.Element {
   );
   const [isPainting, setIsPainting] = useState(false);
   const { color } = useCanvasState();
+  const { stompClient } = useStompClient();
 
   const getCoordinates = (event: MouseEvent): Coordinate | undefined => {
     if (!canvasRef.current) {
@@ -75,6 +77,19 @@ function Drawing({ id, width = 185, height = 198 }: DrawingProps): JSX.Element {
       context.closePath();
 
       context.stroke();
+      stompClient.send(
+        WEBSOCKET_SEND_CHANEL,
+        {},
+        JSON.stringify({
+          commandType: 'DRAW',
+          gameToken: 'TEST-GAME-TOKEN',
+          color: '#000',
+          startX: 0,
+          startY: 0,
+          endX: 1,
+          endY: 1
+        })
+      );
     }
   };
 
