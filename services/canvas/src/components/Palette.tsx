@@ -4,7 +4,9 @@ import Paper from '@material-ui/core/Paper';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import ColorPicker from './ColorPicker';
-import { useCanvasState } from '../context/CanvasProvider';
+import { useSelector, useDispatch } from 'react-redux';
+import { RootState } from '../app/rootReducer';
+import { setColor } from '../feature/canvas/canvasSlice';
 
 const useStyles = makeStyles({
   root: {
@@ -15,13 +17,18 @@ const useStyles = makeStyles({
 export default function Palette() {
   const classes = useStyles();
   const [value, setValue] = useState(0);
-  const { color, setColor } = useCanvasState();
+  const { color } = useSelector((state: RootState) => state.canvas);
+  const dispatch = useDispatch();
 
   const handleChange = (
     event: React.ChangeEvent<unknown>,
     newValue: number
   ) => {
     setValue(newValue);
+  };
+
+  const onChangeColor = (color: string) => {
+    dispatch(setColor(color));
   };
 
   return (
@@ -38,7 +45,7 @@ export default function Palette() {
         <Tab label="ERASER" />
       </Tabs>
       Selected Color: {color}
-      <ColorPicker onChange={setColor} />
+      <ColorPicker onClick={onChangeColor} />
     </Paper>
   );
 }
