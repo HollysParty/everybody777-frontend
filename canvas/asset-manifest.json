@@ -1,0 +1,19 @@
+{
+  "files": {
+    "main.js": "/everybody777-frontend/canvas/static/js/main.c00c0dc3.chunk.js",
+    "main.js.map": "/everybody777-frontend/canvas/static/js/main.c00c0dc3.chunk.js.map",
+    "runtime-main.js": "/everybody777-frontend/canvas/static/js/runtime-main.db2d0d78.js",
+    "runtime-main.js.map": "/everybody777-frontend/canvas/static/js/runtime-main.db2d0d78.js.map",
+    "static/js/2.16c9b2a6.chunk.js": "/everybody777-frontend/canvas/static/js/2.16c9b2a6.chunk.js",
+    "static/js/2.16c9b2a6.chunk.js.map": "/everybody777-frontend/canvas/static/js/2.16c9b2a6.chunk.js.map",
+    "index.html": "/everybody777-frontend/canvas/index.html",
+    "precache-manifest.20de1a1cb59ee33762482ad90b96e1c8.js": "/everybody777-frontend/canvas/precache-manifest.20de1a1cb59ee33762482ad90b96e1c8.js",
+    "service-worker.js": "/everybody777-frontend/canvas/service-worker.js",
+    "static/js/2.16c9b2a6.chunk.js.LICENSE.txt": "/everybody777-frontend/canvas/static/js/2.16c9b2a6.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.db2d0d78.js",
+    "static/js/2.16c9b2a6.chunk.js",
+    "static/js/main.c00c0dc3.chunk.js"
+  ]
+}

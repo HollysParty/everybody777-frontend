@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/everybody777-frontend/screen/static/css/main.e6f93a30.chunk.css",
+    "main.js": "/everybody777-frontend/screen/static/js/main.d97aca3e.chunk.js",
+    "main.js.map": "/everybody777-frontend/screen/static/js/main.d97aca3e.chunk.js.map",
+    "runtime-main.js": "/everybody777-frontend/screen/static/js/runtime-main.f4a05dbc.js",
+    "runtime-main.js.map": "/everybody777-frontend/screen/static/js/runtime-main.f4a05dbc.js.map",
+    "static/js/2.90b37174.chunk.js": "/everybody777-frontend/screen/static/js/2.90b37174.chunk.js",
+    "static/js/2.90b37174.chunk.js.map": "/everybody777-frontend/screen/static/js/2.90b37174.chunk.js.map",
+    "index.html": "/everybody777-frontend/screen/index.html",
+    "precache-manifest.8b9331671a86e0812ce968abb9cf4248.js": "/everybody777-frontend/screen/precache-manifest.8b9331671a86e0812ce968abb9cf4248.js",
+    "service-worker.js": "/everybody777-frontend/screen/service-worker.js",
+    "static/css/main.e6f93a30.chunk.css.map": "/everybody777-frontend/screen/static/css/main.e6f93a30.chunk.css.map",
+    "static/js/2.90b37174.chunk.js.LICENSE.txt": "/everybody777-frontend/screen/static/js/2.90b37174.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.f4a05dbc.js",
+    "static/js/2.90b37174.chunk.js",
+    "static/css/main.e6f93a30.chunk.css",
+    "static/js/main.d97aca3e.chunk.js"
+  ]
+}
