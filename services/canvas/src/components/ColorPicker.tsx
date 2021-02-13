@@ -25,15 +25,15 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function ColorPicker({
-  onChange
+  onClick
 }: {
-  onChange: (color: string) => void;
+  onClick: (color: string) => void;
 }) {
   const classes = useStyles();
   return (
     <div className={classes.wrapper}>
       {colors.map((color) => {
-        return <ColorCircle color={color} onClick={onChange} />;
+        return <ColorCircle color={color} onClick={onClick} />;
       })}
     </div>
   );

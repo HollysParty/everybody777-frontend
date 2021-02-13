@@ -6,8 +6,9 @@ import Palette from './Palette';
 import { BASE_URL, WEBSOCKET_SEND_CHANEL } from '../const';
 import { getTile } from '../api/getTile';
 import { ImageInfo } from '../types';
-import { useCanvasState } from '../context/CanvasProvider';
+import { useSelector, useDispatch } from 'react-redux';
 import { useStompClient } from '../context/WebSocketProvider';
+import { RootState } from '../app/rootReducer';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -40,7 +41,7 @@ function Drawing({ id, width = 185, height = 198 }: DrawingProps): JSX.Element {
     undefined
   );
   const [isPainting, setIsPainting] = useState(false);
-  const { color } = useCanvasState();
+  const { color } = useSelector((state: RootState) => state.canvas);
   const { stompClient } = useStompClient();
 
   const getCoordinates = (event: MouseEvent): Coordinate | undefined => {
